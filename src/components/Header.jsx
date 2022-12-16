@@ -10,6 +10,7 @@ const Header = (props) => {
 						name='choice'
 						value={props.parameters.choice}
 						onChange={props.handleChange}
+						placeholder="Main Ingredient Eg. chicken"
 					/>
 					<select
 						name='dishType'
