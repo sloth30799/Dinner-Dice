@@ -1,4 +1,4 @@
-# Dinner-Dice-App ![Visit Here](https://dinner-dice.onrender.com/)
+# Dinner-Dice-App [Visit Here](https://dinner-dice.onrender.com/)
 
 
 Welcome to the Dinner-Dice-App! This tool is designed to help you come up with new and exciting recipe ideas by generating random recipes for you to try.
