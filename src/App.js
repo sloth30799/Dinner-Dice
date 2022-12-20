@@ -49,7 +49,7 @@ const App = () => {
 
 	return (
 		<div>
-			<div className='bg-info'>
+			<div className='topSection'>
 				<Header
 					parameters={parameters}
 					handleChange={handleChange}
