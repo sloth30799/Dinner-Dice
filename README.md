@@ -2,7 +2,7 @@
 
 ![Imgur](https://i.imgur.com/LVs08Gl.png)
 
-Welcome to the Dinner-Dice-App! This tool is designed to help you come up with new and exciting recipe ideas by generating random recipes for you to try.
+Get inspired in the kitchen with Dinner-Dice - the perfect tool to generate new and exciting recipe ideas for your next meal. Shake things up and try something new with Dinner-Dice!
 
 # How It's Made:
 
