@@ -1,25 +1,49 @@
-# Dinner-Dice-App: [Visit Here](https://dinner-dice.onrender.com/)
+# Dinner Dice
 
-![Imgur](https://i.imgur.com/LVs08Gl.png)
+Dinner Dice is an offline-first dinner decision helper. It replaces the old API-dependent recipe search with a fast local meal deck, weighted dice rolls, filters, favorites, a tonight plan, and a grocery list.
 
-Get inspired in the kitchen with Dinner-Dice - the perfect tool to generate new and exciting recipe ideas for your next meal. Shake things up and try something new with Dinner-Dice!
+## Why this modernization exists
 
-# How It's Made:
+The original version depended on the Edamam API from the browser and exposed an API key in frontend code. The modern version removes that risk: no required AI key, no required recipe API key, and no usage-based cost to run the app.
 
-Tech Used: HTML, CSS, JavaScript, React
+## Features
 
-For database, Used the [EDAMAM recipes API](https://developer.edamam.com/edamam-docs-recipe-api#/).
+- 🎲 Weighted dinner roll from a curated local meal deck
+- Mode cards: Surprise, Cook, Takeout, Leftovers, Cheap, Healthy-ish
+- Filters for max time, effort, budget, and ingredient on hand
+- “Not tonight” reroll avoidance
+- Favorites saved in localStorage
+- Add one meal to tonight’s plan
+- Grocery list generated from the planned meal
+- Responsive modern UI
+- Vite + Vitest modernization
 
-# Optimizations
+## Tech
 
-Might add some new features like user login, signup and add favourites tab so you can save your favourite recipes.
+- React 18
+- Vite
+- Vitest
+- Testing Library
+- Plain CSS
+- localStorage
 
-# Lessons Learned:
+## Run locally
 
-Learned how to use React to build better and interactive user interfaces.
+```bash
+npm install
+npm run dev
+```
 
-# How to Use
+## Test and build
 
-Add the ingredient you want to use. Can choose mealType and cuisineType or you can just throw the dice and get recipes back.
-If you don't like the recipe, simply can click the dice again.
-Have fun and enjoy trying out new recipes!
+```bash
+npm test
+npm run build
+npm audit --omit=dev
+```
+
+Current expected gates:
+
+- Tests pass
+- Production build succeeds
+- Audit reports 0 vulnerabilities
