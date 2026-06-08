@@ -1,10 +1,19 @@
-# Dinner Dice
+# CraveRoll
 
-Dinner Dice is an offline-first dinner decision helper. It replaces the old API-dependent recipe search with a fast local meal deck, weighted dice rolls, filters, favorites, a tonight plan, and a grocery list.
+CraveRoll is an offline-first dinner decision app with a playful Gen Z feel: fast rolls, clear filters, satisfying motion, favorites, a tonight board, and a grocery list without API keys or decision spiral.
+
+![CraveRoll logo](public/craveroll-logo.svg)
 
 ## Why this modernization exists
 
-The original version depended on the Edamam API from the browser and exposed an API key in frontend code. The modern version removes that risk: no required AI key, no required recipe API key, and no usage-based cost to run the app.
+The original Dinner Dice version depended on the Edamam API from the browser and exposed an API key in frontend code. CraveRoll removes that risk: no required AI key, no required recipe API key, and no usage-based cost to run the app.
+
+## Product direction
+
+- Cool, animated, and convenient — motion should guide the user, not confuse them.
+- One-tap randomization with obvious controls.
+- Gen Z visual language: bold gradients, playful micro-interactions, compact copy, and satisfying result reveals.
+- Local-first by default so the app is fast, cheap to run, and safe to demo.
 
 ## Features
 
@@ -15,7 +24,7 @@ The original version depended on the Edamam API from the browser and exposed an 
 - Favorites saved in localStorage
 - Add one meal to tonight’s plan
 - Grocery list generated from the planned meal
-- Responsive modern UI
+- Responsive modern UI with animation hooks
 - Vite + Vitest modernization
 
 ## Tech

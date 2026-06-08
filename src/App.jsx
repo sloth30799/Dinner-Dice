@@ -16,6 +16,10 @@ const MEALS = [
   { id: "burger-salad-night", name: "Burger Salad Night", emoji: "🍔", cuisine: "American", mode: "healthy", time: 25, effort: "medium", budget: "medium", vibe: "hearty", diet: ["gluten-free"], ingredients: ["ground beef or veggie patty", "lettuce", "pickles", "tomatoes", "special sauce"], steps: ["Cook patties or veggie patties.", "Chop salad toppings.", "Finish with burger sauce and pickles."], why: "Scratches the burger itch while staying lighter.", weight: 6 },
 ];
 
+const APP_NAME = "CraveRoll";
+const STORAGE_PREFIX = "craveroll";
+const LEGACY_STORAGE_PREFIX = "dinner-dice";
+
 const DEFAULT_FILTERS = { mode: "surprise", maxTime: "any", effort: "any", budget: "any", ingredient: "" };
 const modeOptions = [
   { value: "surprise", label: "Surprise me", icon: "🎲" },
@@ -28,7 +32,7 @@ const modeOptions = [
 
 function readStorage(key, fallback) {
   try {
-    const saved = window.localStorage.getItem(key);
+    const saved = window.localStorage.getItem(key) ?? window.localStorage.getItem(key.replace(STORAGE_PREFIX, LEGACY_STORAGE_PREFIX));
     return saved ? JSON.parse(saved) : fallback;
   } catch {
     return fallback;
@@ -69,17 +73,17 @@ export function pickWeightedMeal(meals, recentIds = []) {
 function App() {
   const [filters, setFilters] = React.useState(DEFAULT_FILTERS);
   const [selectedMeal, setSelectedMeal] = React.useState(() => MEALS[0]);
-  const [favorites, setFavorites] = React.useState(() => readStorage("dinner-dice:favorites", []));
-  const [rejected, setRejected] = React.useState(() => readStorage("dinner-dice:not-tonight", []));
-  const [recent, setRecent] = React.useState(() => readStorage("dinner-dice:recent", []));
+  const [favorites, setFavorites] = React.useState(() => readStorage(`${STORAGE_PREFIX}:favorites`, []));
+  const [rejected, setRejected] = React.useState(() => readStorage(`${STORAGE_PREFIX}:not-tonight`, []));
+  const [recent, setRecent] = React.useState(() => readStorage(`${STORAGE_PREFIX}:recent`, []));
   const [rolling, setRolling] = React.useState(false);
-  const [message, setMessage] = React.useState("Ready when your brain is tired of choosing.");
-  const [plannedMealId, setPlannedMealId] = React.useState(() => readStorage("dinner-dice:planned", null));
+  const [message, setMessage] = React.useState("Ready when your cravings are loud and your brain is offline.");
+  const [plannedMealId, setPlannedMealId] = React.useState(() => readStorage(`${STORAGE_PREFIX}:planned`, null));
 
-  React.useEffect(() => writeStorage("dinner-dice:favorites", favorites), [favorites]);
-  React.useEffect(() => writeStorage("dinner-dice:not-tonight", rejected), [rejected]);
-  React.useEffect(() => writeStorage("dinner-dice:recent", recent), [recent]);
-  React.useEffect(() => writeStorage("dinner-dice:planned", plannedMealId), [plannedMealId]);
+  React.useEffect(() => writeStorage(`${STORAGE_PREFIX}:favorites`, favorites), [favorites]);
+  React.useEffect(() => writeStorage(`${STORAGE_PREFIX}:not-tonight`, rejected), [rejected]);
+  React.useEffect(() => writeStorage(`${STORAGE_PREFIX}:recent`, recent), [recent]);
+  React.useEffect(() => writeStorage(`${STORAGE_PREFIX}:planned`, plannedMealId), [plannedMealId]);
 
   const candidates = React.useMemo(() => filterMeals(MEALS, filters, rejected), [filters, rejected]);
   const favoriteMeals = MEALS.filter((meal) => favorites.includes(meal.id));
@@ -119,7 +123,7 @@ function App() {
   function resetFilters() {
     setFilters(DEFAULT_FILTERS);
     setRejected([]);
-    setMessage("Filters cleared. Full chaos restored.");
+    setMessage("Filters cleared. Full crave chaos restored.");
   }
 
   function addToPlan(mealId) {
@@ -131,12 +135,12 @@ function App() {
     <main className="app-shell">
       <section className="hero" aria-labelledby="app-title">
         <div className="hero-copy">
-          <p className="eyebrow">No API keys. No decision spiral.</p>
-          <h1 id="app-title">Dinner Dice</h1>
-          <p>Roll one strong dinner idea from a local rule-based meal deck. Tune the vibe, dodge repeats, save favorites, and get dinner moving.</p>
+          <p className="eyebrow">Roll the crave. Skip the spiral.</p>
+          <div className="brand-lockup"><img src="/craveroll-logo.svg" alt="" /><h1 id="app-title">{APP_NAME}</h1></div>
+          <p>A fast, animated dinner randomizer for when nobody knows what they want. Tune the vibe, roll a pick, save winners, and turn hunger into a plan.</p>
         </div>
         <div className="dice-card" aria-hidden="true">
-          <span className={rolling ? "dice rolling" : "dice"}>🎲</span>
+          <span className={rolling ? "dice rolling" : "dice"}>🎲</span><span className="roll-orbit">🍜</span><span className="roll-orbit second">🌮</span>
           <strong>{candidates.length}</strong>
           <small>matching ideas</small>
         </div>
@@ -144,7 +148,7 @@ function App() {
 
       <section className="control-panel" aria-label="Dinner filters">
         <div>
-          <h2>What kind of dinner night is this?</h2>
+          <h2>What crave mode are we in?</h2>
           <div className="mode-grid" role="group" aria-label="Dinner mode">
             {modeOptions.map((option) => (
               <button key={option.value} className={filters.mode === option.value ? "mode-card active" : "mode-card"} type="button" onClick={() => updateFilter("mode", option.value)} aria-pressed={filters.mode === option.value}>
@@ -159,7 +163,7 @@ function App() {
           <label>Effort<select value={filters.effort} onChange={(event) => updateFilter("effort", event.target.value)}><option value="any">Any effort</option><option value="low">Low</option><option value="medium">Medium</option></select></label>
           <label>Budget<select value={filters.budget} onChange={(event) => updateFilter("budget", event.target.value)}><option value="any">Any budget</option><option value="cheap">Cheap</option><option value="medium">Medium</option></select></label>
           <label>Ingredient on hand<input value={filters.ingredient} onChange={(event) => updateFilter("ingredient", event.target.value)} placeholder="rice, eggs, tofu..." /></label>
-          <div className="filter-actions"><button className="primary-button" type="submit" disabled={rolling}>{rolling ? "Rolling..." : "Roll dinner"}</button><button className="ghost-button" type="button" onClick={resetFilters}>Reset</button></div>
+          <div className="filter-actions"><button className="primary-button" type="submit" disabled={rolling}>{rolling ? "Rolling..." : "Roll the crave"}</button><button className="ghost-button" type="button" onClick={resetFilters}>Reset</button></div>
         </form>
       </section>
 
@@ -169,7 +173,7 @@ function App() {
         <article className="result-card" aria-labelledby="result-title">
           {selectedMeal ? (
             <>
-              <div className="result-topline"><span className="meal-emoji" aria-hidden="true">{selectedMeal.emoji}</span><div><p className="eyebrow">Tonight’s roll</p><h2 id="result-title">{selectedMeal.name}</h2></div></div>
+              <div className="result-topline"><span className="meal-emoji" aria-hidden="true">{selectedMeal.emoji}</span><div><p className="eyebrow">Tonight’s crave roll</p><h2 id="result-title">{selectedMeal.name}</h2></div></div>
               <p className="why">{selectedMeal.why}</p>
               <dl className="stats-grid"><div><dt>Time</dt><dd>{selectedMeal.time} min</dd></div><div><dt>Effort</dt><dd>{selectedMeal.effort}</dd></div><div><dt>Budget</dt><dd>{selectedMeal.budget}</dd></div><div><dt>Cuisine</dt><dd>{selectedMeal.cuisine}</dd></div></dl>
               <div className="tag-list" aria-label="Meal tags">{[selectedMeal.mode, selectedMeal.vibe, ...selectedMeal.diet].map((tag) => <span key={tag}>{tag}</span>)}</div>

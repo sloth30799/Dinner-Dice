@@ -2,11 +2,11 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 
-test('renders the modern Dinner Dice workflow', () => {
+test('renders the modern CraveRoll workflow', () => {
   render(<App />);
-  expect(screen.getByRole('heading', { name: /dinner dice/i })).toBeInTheDocument();
-  expect(screen.getByRole('button', { name: /roll dinner/i })).toBeInTheDocument();
-  expect(screen.getByText(/tonight’s roll/i)).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /craveroll/i })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /roll the crave/i })).toBeInTheDocument();
+  expect(screen.getByText(/tonight’s crave roll/i)).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: /favorites/i })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: /grocery list/i })).toBeInTheDocument();
 });

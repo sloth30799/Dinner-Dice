@@ -1,0 +1,46 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">CraveRoll logo</title>
+  <desc id="desc">A vibrant rolling dice app icon with a bite mark, sparkles, and food-inspired gradient colors.</desc>
+  <defs>
+    <linearGradient id="bg" x1="142" y1="108" x2="880" y2="923" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFB23F"/>
+      <stop offset="0.44" stop-color="#FF5F8F"/>
+      <stop offset="1" stop-color="#7C4DFF"/>
+    </linearGradient>
+    <linearGradient id="cube" x1="267" y1="208" x2="774" y2="813" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF7D7"/>
+      <stop offset="0.48" stop-color="#FFE07A"/>
+      <stop offset="1" stop-color="#FF7A59"/>
+    </linearGradient>
+    <linearGradient id="side" x1="353" y1="421" x2="765" y2="791" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF7AB6"/>
+      <stop offset="1" stop-color="#6C3BFF"/>
+    </linearGradient>
+    <filter id="shadow" x="96" y="112" width="832" height="832" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="38" stdDeviation="42" flood-color="#130F24" flood-opacity="0.42"/>
+    </filter>
+  </defs>
+  <rect width="1024" height="1024" rx="232" fill="#160F2D"/>
+  <path d="M116 248C251 72 507 57 681 124C864 195 960 401 893 602C815 838 574 941 359 871C144 801 -18 423 116 248Z" fill="url(#bg)"/>
+  <path d="M186 256C238 216 303 190 374 181" stroke="#FFF7D7" stroke-width="34" stroke-linecap="round" opacity="0.62"/>
+  <path d="M132 378C182 351 233 335 285 331" stroke="#7EE2A8" stroke-width="28" stroke-linecap="round" opacity="0.78"/>
+  <path d="M770 187L795 244L857 253L812 296L823 357L770 327L716 357L728 296L682 253L744 244L770 187Z" fill="#FFF2B8"/>
+  <path d="M199 702L219 748L269 756L232 791L241 841L199 816L155 841L165 791L128 756L178 748L199 702Z" fill="#7EE2A8"/>
+  <g filter="url(#shadow)">
+    <path d="M317 231L700 282C763 291 810 346 804 410L766 741C759 803 704 849 642 843L278 806C211 799 162 739 174 673L232 357C245 283 249 222 317 231Z" fill="url(#cube)"/>
+    <path d="M447 424L804 410L766 741C759 803 704 849 642 843L394 818L447 424Z" fill="url(#side)" opacity="0.9"/>
+    <path d="M317 231L700 282C733 287 762 305 781 331L447 424L232 357C245 283 249 222 317 231Z" fill="#FFF6C7" opacity="0.86"/>
+    <circle cx="359" cy="338" r="42" fill="#241436"/>
+    <circle cx="589" cy="319" r="42" fill="#241436"/>
+    <circle cx="329" cy="590" r="42" fill="#241436"/>
+    <circle cx="593" cy="622" r="39" fill="#FFF7D7"/>
+    <circle cx="690" cy="507" r="35" fill="#FFF7D7"/>
+    <circle cx="506" cy="725" r="35" fill="#FFF7D7"/>
+    <path d="M728 270C696 295 688 346 712 383C735 417 779 431 817 415C832 376 817 327 781 300C765 288 747 278 728 270Z" fill="#160F2D"/>
+    <circle cx="784" cy="306" r="34" fill="#160F2D"/>
+    <circle cx="827" cy="358" r="30" fill="#160F2D"/>
+    <path d="M266 758C359 835 534 882 691 819" stroke="#FFF7D7" stroke-width="20" stroke-linecap="round" opacity="0.34"/>
+  </g>
+  <path d="M815 656C878 642 908 628 943 591" stroke="#FFF7D7" stroke-width="24" stroke-linecap="round" opacity="0.8"/>
+  <path d="M818 722C874 724 914 716 963 688" stroke="#7EE2A8" stroke-width="20" stroke-linecap="round" opacity="0.75"/>
+</svg>
